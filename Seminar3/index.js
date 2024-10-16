@@ -158,3 +158,99 @@ p.setName("Mihai");
 console.log(p.getName()); // Mihai
 
 console.log(p.getNameAndAge()); // Mihai are 20 ani
+
+let persoana = new Persoana("Andrei");
+
+console.log(persoana.getName()); // Andrei
+
+persoana.setAge(30);
+console.log(persoana.getAge()); // 30
+
+console.log(persoana.getNameAndAge()); // Andrei are 30 ani
+
+class PersoanaClass {
+  constructor(name) {
+    this.name = name;
+    this.age = 0;
+  }
+
+  getName() {
+    return this.name;
+  }
+
+  setName(newName) {
+    this.name = newName;
+  }
+
+  getAge() {
+    return this.age;
+  }
+
+  setAge(newAge) {
+    this.age = newAge;
+  }
+
+  getNameAndAge() {
+    return `${this.name} are ${this.age} ani`;
+  }
+}
+
+let persoanaClass = new PersoanaClass("Andrei");
+
+console.log(persoanaClass.getName());
+console.log(persoanaClass.getAge());
+console.log(persoanaClass.getNameAndAge());
+
+let myArrO = [
+  { id: 1, name: "Ionut", isActive: true },
+  { id: 2, name: "Octav", isActive: true },
+  { id: 3, name: "Mihai", isActive: false },
+];
+
+for (let i of myArrO) {
+  console.log(i);
+}
+
+// show only active users
+let activeUsers = myArrO.filter((user) => user.isActive);
+console.log(activeUsers);
+
+// filter by a non existent user
+let andrei = myArrO.filter((user) => user.name === "Andrei");
+
+console.log(andrei); // []
+
+// is there any active user?
+let anyActive = myArrO.some((user) => user.isActive);
+
+console.log(anyActive);
+
+// all users active
+let allActive = myArrO.every((user) => user.isActive); // not performant as this goes through each element
+
+console.log(allActive);
+
+// reduce
+let sum = myArrO.reduce((acc, user) => acc + user.id, 0);
+console.log(sum);
+
+// select only name
+let names = myArrO.map((user) => user.name);
+console.log(names);
+
+// select only name and id
+let namesAndIds = myArrO.map((user) => {
+  return { id: user.id, name: user.name };
+});
+
+console.log(namesAndIds);
+
+// select name and id on active users
+
+let namesAndIdsActive = myArrO
+  .filter((user) => user.isActive)
+  .map((user) => {
+    return { id: user.id, name: user.name };
+  });
+
+console.log(namesAndIdsActive);
